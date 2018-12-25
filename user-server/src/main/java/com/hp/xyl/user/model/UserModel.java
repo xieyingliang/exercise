@@ -31,4 +31,12 @@ public class UserModel {
      * 电话号码
      */
     private String phoneNumber;
+    /**
+     * 账号
+     */
+    private String account;
+    /**
+     * 密码
+     */
+    private String password;
 }

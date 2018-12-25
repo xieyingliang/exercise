@@ -52,6 +52,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             model.setPhoneNumber(user.getPhoneNumber());
             model.setSex(user.getSex());
             model.setUsername(user.getUsername());
+            model.setAccount(user.getAccount());
+            model.setPassword(user.getPassword());
             models.add(model);
         }
         return models;
