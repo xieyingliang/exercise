@@ -16,8 +16,16 @@ public interface UserService extends IService<User> {
      *
      * @param pageNo   页码
      * @param pageSize 页面大小
-     * @param username
+     * @param username 用户名
      * @return 分页
      */
     PageModel<UserModel> getUsersPage(Integer pageNo, Integer pageSize, String username);
+
+    /**
+     * 校验用户信息是否存在
+     *
+     * @param username 用户名
+     * @param password 密码
+     */
+    void loginCheck(String username, String password);
 }

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hp.xyl.user.exception.SysException;
 import com.hp.xyl.user.mapper.UserMapper;
 import com.hp.xyl.user.entity.User;
 import com.hp.xyl.user.model.PageModel;
@@ -30,7 +31,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public PageModel<UserModel> getUsersPage(Integer pageNo, Integer pageSize, String username) {
-        Page page = new Page(pageNo, pageSize);
+        Page<User> page = new Page<>(pageNo, pageSize);
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         if (!StringUtil.isEmpty(username)) {
             wrapper.like("username", username);
@@ -41,6 +42,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         pageModel.setTotalPages(userPage.getPages());
         pageModel.setContent(user2Models(userPage.getRecords()));
         return pageModel;
+    }
+
+    @Override
+    public void loginCheck(String username, String password) {
+        int count = userMapper.checkUser(username, password);
+        //没有记录
+        if (0 == count) {
+            throw new SysException("用户名或密码错误");
+        }
     }
 
     private List<UserModel> user2Models(List<User> users) {

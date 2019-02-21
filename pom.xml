@@ -12,6 +12,7 @@
         <module>eureka-server</module>
         <module>config-server</module>
         <module>user-server</module>
+        <module>gateway</module>
     </modules>
 
     <!-- 使用最新的spring-boot版本-->
@@ -25,8 +26,9 @@
         <java.version>1.8</java.version>
         <smack.version>4.1.7</smack.version>
         <swagger.version>2.7.0</swagger.version>
+        <mybatis-plus.version>3.0.6</mybatis-plus.version>
+        <lombok.version>1.18.2</lombok.version>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -48,7 +50,19 @@
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swagger.version}</version>
             </dependency>
-
+            <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>

@@ -46,4 +46,12 @@ public class UserController {
         userService.removeById(id);
         return resultModel;
     }
+
+    @ApiOperation(value = "登录校验")
+    @PostMapping(value = "check")
+    public ResultModel loginCheck(String username, String password) {
+        ResultModel resultModel = new ResultModel();
+        userService.loginCheck(username, password);
+        return resultModel;
+    }
 }
