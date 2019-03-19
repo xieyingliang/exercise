@@ -13,6 +13,7 @@
         <module>config-server</module>
         <module>user-server</module>
         <module>gateway</module>
+        <module>mq-server</module>
     </modules>
 
     <!-- 使用最新的spring-boot版本-->
@@ -38,7 +39,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-activemq</artifactId>
+                <version>2.1.2.RELEASE</version>
+            </dependency>
             <!--增加swagger插件-->
             <dependency>
                 <groupId>io.springfox</groupId>
