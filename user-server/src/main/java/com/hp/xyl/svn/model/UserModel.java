@@ -12,6 +12,10 @@ import lombok.Setter;
 @Setter
 public class UserModel {
     /**
+     * 表名
+     */
+    public static final String TABLE = "t_user";
+    /**
      * id
      */
     private Long id;
